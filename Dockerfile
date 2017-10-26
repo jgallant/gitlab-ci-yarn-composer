@@ -4,6 +4,8 @@ RUN export LC_ALL=C.UTF-8
 RUN DEBIAN_FRONTEND=noninteractive
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
+ARG COMPOSER_VERSION=1.5.2
+
 ENV COMPOSER_HOME /composer
 ENV PATH "/composer/vendor/bin:$PATH"
 ENV COMPOSER_ALLOW_SUPERUSER 1
@@ -52,11 +54,7 @@ RUN apt-get install -y \
 RUN command -v php
 
 # Composer
-RUN curl -sS https://getcomposer.org/installer | php
-RUN mv composer.phar /usr/local/bin/composer && \
-    chmod +x /usr/local/bin/composer && \
-    composer self-update --preview
-RUN command -v composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer --version=${COMPOSER_VERSION}
 
 # PHPUnit
 RUN wget https://phar.phpunit.de/phpunit.phar
