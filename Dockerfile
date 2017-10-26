@@ -7,6 +7,20 @@ ENV PATH "/composer/vendor/bin:$PATH"
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
 RUN apk add -U \
+    automake \
+    git \
+    alpine-sdk  \
+    nasm  \
+    autoconf  \
+    build-base \
+    zlib \
+    zlib-dev \
+    libpng \
+    libpng-dev\
+    libwebp \
+    libwebp-dev \
+    libjpeg-turbo \
+    libjpeg-turbo-dev \
     php7 \
     php7-dev \
     php7-common \
@@ -47,7 +61,6 @@ RUN apk add -U \
     rsync \
     sshpass \
     python \
-    zlib-dev \
     g++ \
     make \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer --version=${COMPOSER_VERSION} \
