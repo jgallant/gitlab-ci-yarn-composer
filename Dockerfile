@@ -72,5 +72,10 @@ RUN command -v npm
 # Yarn
 RUN npm install yarn -g
 
+# Newman
+ENV NEWMAN_VERSION 3.9.3
+
+RUN npm install -g newman@${NEWMAN_VERSION};
+
 # Other
 RUN mkdir ~/.ssh
