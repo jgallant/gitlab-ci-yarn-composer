@@ -25,13 +25,7 @@ RUN apt-get install -y \
     apt-utils \
     software-properties-common \
     python-software-properties \
-    nasm \
-    libjpeg-dev \
-    libpng-dev
-
-RUN wget -q -O /tmp/libpng12.deb http://mirrors.kernel.org/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1_amd64.deb \
-  && dpkg -i /tmp/libpng12.deb \
-  && rm /tmp/libpng12.deb
+    nasm
 
 # PHP
 RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y php7.2
@@ -48,9 +42,7 @@ RUN apt-get install -y \
     php7.2-soap \
     php7.2-json \
     php7.2-intl \
-    php7.2-imap \
-    php-xdebug \
-    php-memcached
+    php7.2-imap
 RUN command -v php
 
 # Composer
